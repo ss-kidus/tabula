@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TABULA</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#E65100", // Electric Clay
+                        "primary-dark": "#b03c00",
+                        "stone-light": "#FDFCF8", // Warm Stone
+                        "stone-dark": "#161618", // Deep Basalt
+                        "surface-white": "#ffffff",
+                        "surface-dark": "#202022",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.35rem", 
+                        "lg": "0.75rem", 
+                        "xl": "1rem", 
+                        "2xl": "1.5rem", 
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+                        'ceramic': '0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
+                        'ceramic-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        'floating': '0 12px 24px -6px rgba(0,0,0,0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Stone OS Global Styles */
+        body {
+            background-color: #FDFCF8;
+        }
+        .dark body {
+            background-color: #161618;
+        }
+        
+        /* Noise Texture Layer */
+        .bg-noise::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Content z-index fix for noise */
+        #root {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-noise text-stone-900 dark:text-stone-100">
+    <div id="root"></div>
+</body>
+</html>
